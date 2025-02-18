@@ -10,7 +10,7 @@ const Counter = () => {
   });
 
   return (
-    <div>
+    <div className="counter">
       <div className="title">Simple Counter</div>
       <div className="button-group">
         <button onClick={() => dispatch(decrement())}>Decrement</button>
