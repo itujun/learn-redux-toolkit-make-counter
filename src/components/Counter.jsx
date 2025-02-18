@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from '../store/slices/counterSlice';
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
-  const increaseCount = () => {
-    setCount((number) => number + 1);
-  };
-  const decreaseCount = () => {
-    setCount((number) => number - 1);
-  };
+  const dispatch = useDispatch();
+  const { count, countKuadrat } = useSelector((state) => {
+    const kuadrat = state.counter.value * state.counter.value;
+    return { count: state.counter.value, countKuadrat: kuadrat };
+  });
+
   return (
     <div>
       <div className="title">Simple Counter</div>
       <div className="button-group">
-        <button onClick={decreaseCount}>Decrement</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
         <div className="section">
           <div>{count}</div>
         </div>
-        <button onClick={increaseCount}>Increment</button>
+        <div className="section">
+          <div>{countKuadrat}</div>
+        </div>
+        <button onClick={() => dispatch(increment(2))}>Increment</button>
       </div>
     </div>
   );

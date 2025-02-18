@@ -19,8 +19,6 @@ code {
   background-color: darkgoldenrod;
   border-radius: 5px;
   max-width: fit-content;
-  display: flex;
-  justify-content: center;
 }
 
 .title {
